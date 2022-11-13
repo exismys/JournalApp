@@ -1,0 +1,22 @@
+.container {
+    width: 1200px;
+    margin: 0px auto;
+    columns: 4;
+    column-gap: 4px;
+}
+
+.box {
+    width: 256px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: grey;
+    break-inside: avoid;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: padding 1s;
+}
+
+.box :hover {
+    padding: 10px;
+}
