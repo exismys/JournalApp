@@ -1,22 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Pacifico);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .container {
-    width: 1200px;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
     margin: 0px auto;
     columns: 4;
-    column-gap: 4px;
+    padding: 16px;
 }
 
 .box {
-    width: 256px;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border: grey;
-    break-inside: avoid;
-    margin-bottom: 4px;
-    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
     opacity: 0.8;
-    transition: padding 1s;
+    box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    overflow: hidden;
+    text-align: center;
+    transition: opacity 1s, box-shadow 1s;
 }
 
-.box :hover {
+.box:hover {
+    opacity: 1;
+    box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.5);
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+}
+
+header {
+    overflow: visible;
+    margin: 10px auto;
+    background-color: #133337;
+    width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Pacifico", sans-serif;
+    opacity: 0.8;
+}
+
+header p:first-child {
+    color: #ff661a;
+    font-size: 24px;
+}
+
+header a {
+    color: #a3cdf1;
+    font-size: 24px;
+}
+
+header .add-icon {
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid white;
+    transform: rotate(0deg);
+    transition: transform 1s;
+}
+
+.add-icon:hover {
+    transform: rotate(45deg);
 }
