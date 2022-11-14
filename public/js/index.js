@@ -7,3 +7,31 @@ for (element of elements) {
     console.log(color);
     element.style.backgroundColor = color;
 }
+
+document.getElementById("signout").addEventListener("click", (event) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "/signin/";
+});
+
+document.getElementById("add-icon").addEventListener("click", (event) => {
+    console.log("clicked");
+    const form = document.getElementById("form-add")
+    form.style.display = "block";
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const result = await fetch("/", {
+            method: 'PUT',
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                username: localStorage.getItem("username"),
+                journalheading: document.getElementById("journalheading").value,
+                journalbody: document.getElementById("journalbody").value
+            })
+        }).then((res) => res.json());
+        form.style.display = "none";
+        window.location.href = "/";
+    })
+})

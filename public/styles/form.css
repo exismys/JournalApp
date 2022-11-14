@@ -23,12 +23,33 @@ form input {
     font-family: inherit;
 }
 
-form #btn-submit {
+form textarea {
+    margin: 5px 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 16px;
+    font-family: inherit;
+}
+
+form a {
+    color: rgba(151, 194, 237, 0.5);
+    padding: 10px;
+    border-radius: 16px;
+    font-size: 12px;
+    transition: background-color 1s, color 1s;
+}
+
+form a:hover {
+    background-color: rgba(220, 125, 16, 1);
+    color:rgba(0, 0, 0, 0.7);
+}
+
+form .form-button {
     background-color: rgba(220, 125, 16, 1);
     transition: background-color 1s;
     color:rgba(0, 0, 0, 0.7)
 }
 
-form #btn-submit:hover {
+form .form-button:hover {
     background-color: rgba(220, 125, 16, 0.8)
 }

@@ -57,9 +57,10 @@ header p:first-child {
 header a {
     color: #a3cdf1;
     font-size: 24px;
+    text-decoration: none;
 }
 
-header .add-icon {
+header #add-icon {
     font-size: 24px;
     color: white;
     background-color: rgba(0, 0, 0, 0);
@@ -68,6 +69,6 @@ header .add-icon {
     transition: transform 1s;
 }
 
-.add-icon:hover {
+#add-icon:hover {
     transform: rotate(45deg);
 }
