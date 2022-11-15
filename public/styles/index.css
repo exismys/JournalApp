@@ -14,6 +14,12 @@
     padding: 16px;
 }
 
+#empty {
+    width: 800px;
+    font-family: "Montserrat", sans-serif;
+    margin: 50px auto;
+}
+
 .box {
     width: 100%;
     padding: 10px;

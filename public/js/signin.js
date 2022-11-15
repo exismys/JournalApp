@@ -29,17 +29,6 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         } else {
             alert(res.error);
         }
-        
-        // const res = fetch("/", {
-        //     method: 'POST',
-        //     headers: {
-        //         "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         username: document.getElementById('username').value,
-        //     })
-        // }).then((res) => res);
-
     } else {
         alert(result.error);
     }

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <script src="/js/authorization.js"></script> -->
+    <title>Journal</title>
     <link type="text/css" rel="stylesheet" href="/styles/index.css">
     <link type="text/css" rel="stylesheet" href="/styles/form.css">
     <link type="text/css" rel="stylesheet" href="/styles/modal.css">
 </head>
+
 <body>
+
     <header>
-        <p>Exismys</p>
+        <p><%= username %></p>
         <p id="add-icon">+</p>
         <p><a id="signout" href="#">Sign Out</a></p>
     </header>
 
-    <form id="form-add">
-        <input id="journalheading" type="text" name="journalheading" placeholder="Journal Heading"><br>
-        <textarea id="journalbody" name="journalbody" col="50" row="4" placeholder="Journal Body"></textarea>
-        <input class="form-button" id="btn-submit" type="submit" value="Add">
-    </form>
+    
+    <% if (journals.length == 0) { %>
+        <div id="empty">
+            <p>You do not have any journal.</p>
+        </div> 
+    <% } %>
 
     <div class="container">
         <% journals.forEach(function(journal) { %>
@@ -31,6 +34,14 @@
         <% }) %>
     </div>
 
+    <form id="form-add">
+        <input id="journalheading" type="text" name="journalheading" placeholder="Journal Heading"><br>
+        <textarea id="journalbody" name="journalbody" col="50" row="4" placeholder="Journal Body"></textarea>
+        <input class="form-button" id="btn-submit" type="submit" value="Add">
+    </form>
+
     <script src="/js/index.js"></script>
+    
 </body>
+
 </html>
