@@ -10,6 +10,26 @@
     <link type="text/css" rel="stylesheet" href="/styles/modal.css">
 </head>
 
+<!-- Script to check authorization -->
+<script>
+    async function isAuthorized() {
+        const result = await fetch("/isauthorized/", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                token: localStorage.getItem("token")
+            })
+        }).then(res => res.json());
+
+        if (result.status !== "ok" || result.username !== window.location.search.substring(4)) {
+            window.location.href = "/signin/";
+        }
+    }
+    isAuthorized();
+</script>
+
 <body>
 
     <header>
@@ -18,18 +38,22 @@
         <p><a id="signout" href="#">Sign Out</a></p>
     </header>
 
-    
-    <% if (journals.length == 0) { %>
+
+    <% if (journals.length==0) { %>
         <div id="empty">
             <p>You do not have any journal.</p>
-        </div> 
+        </div>
     <% } %>
 
     <div class="container">
         <% journals.forEach(function(journal) { %>
             <div class="box">
-                <h2><%= journal.heading %></h2>
-                <p><%= journal.body %></p>
+                <h2>
+                    <%= journal.heading %>
+                </h2>
+                <p>
+                    <%= journal.body %>
+                </p>
             </div>
         <% }) %>
     </div>
@@ -41,7 +65,7 @@
     </form>
 
     <script src="/js/index.js"></script>
-    
+
 </body>
 
 </html>

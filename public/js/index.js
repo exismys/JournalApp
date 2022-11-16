@@ -32,6 +32,6 @@ document.getElementById("add-icon").addEventListener("click", (event) => {
             })
         }).then((res) => res.json());
         form.style.display = "none";
-        window.location.href = "/";
-    })
-})
+        window.location.href = `/user/?un=${localStorage.getItem("username")}`;
+    });
+});
