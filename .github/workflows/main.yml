@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  deploy-to-ec2:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
@@ -21,16 +21,16 @@ jobs:
           remote_host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
           remote_user: ubuntu
           remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
-
-  build:
+  start-server:
     name: start server
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
+          username: ubuntu
+          key: "${{ secrets.SSH_PRIVATE_KEY }}"
           script: |
             cd deployments
             npm install
