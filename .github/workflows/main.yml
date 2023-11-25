@@ -35,7 +35,6 @@ jobs:
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            touch somefile.txt
             cd deployments
             PID=$(ps -ef | grep node | grep -v grep | awk '{print $2}')
             if [ -z "$PID" ];
