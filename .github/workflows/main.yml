@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
         with:
           host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
           username: ubuntu
