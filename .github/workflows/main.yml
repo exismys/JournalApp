@@ -25,10 +25,10 @@ jobs:
     needs: deploy-to-ec2
     name: start server
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: appleboy/ssh-action@master
-        timeout-seconds: 30
         with:
           host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
           username: ubuntu
@@ -46,4 +46,4 @@ jobs:
                   kill -9 $PID
             fi
             npm install
-            node index.js &
+            node index.js & exit 
