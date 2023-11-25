@@ -33,6 +33,7 @@ jobs:
           username: ubuntu
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
           script: |
+            touch somefile.txt
             cd deployments
             npm install
             node index.js
