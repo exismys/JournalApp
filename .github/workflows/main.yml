@@ -37,5 +37,5 @@ jobs:
             source ~/.nvm/nvm.sh
             touch somefile.txt
             cd deployments
-            npm install
+            npm install &
             node index.js
