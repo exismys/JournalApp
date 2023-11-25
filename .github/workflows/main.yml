@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  HOST: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
+
 on:
   push:
     branches: [master]
@@ -18,9 +21,10 @@ jobs:
           switches: -avzr --delete
           path: ./*
           remote_path: /home/ubuntu/deployments
-          remote_host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
+          remote_host: "${{ env.HOST }}"
           remote_user: ubuntu
           remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+
   start-server:
     needs: deploy-to-ec2
     name: start server
@@ -30,7 +34,7 @@ jobs:
     steps:
       - uses: appleboy/ssh-action@master
         with:
-          host: ec2-3-111-58-220.ap-south-1.compute.amazonaws.com
+          host: "${{ env.HOST }}"
           username: ubuntu
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
           script: |
