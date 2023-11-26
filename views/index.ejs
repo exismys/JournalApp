@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="/styles/index.css">
     <link type="text/css" rel="stylesheet" href="/styles/form.css">
     <link type="text/css" rel="stylesheet" href="/styles/modal.css">
+    <link type="application/javascript" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTvM5+A9WQZaWTmJ2G4W3tQI5lql5yI94" crossorigin="anonymous">
 </head>
 
 <!-- Script to check authorization -->
@@ -33,11 +34,12 @@
 <body>
 
     <header>
-        <p><%= username %></p>
-        <p id="add-icon">+</p>
-        <p><a id="signout" href="#">Sign Out</a></p>
+        <div class="header-content">
+            <p><%= username %></p>
+            <a id="signout" href="#">Sign Out</a>
+        </div>
+        <div id="add-icon">+</div>
     </header>
-
 
     <% if (journals.length==0) { %>
         <div id="empty">
@@ -48,19 +50,15 @@
     <div class="container">
         <% journals.forEach(function(journal) { %>
             <div class="box">
-                <h2>
-                    <%= journal.heading %>
-                </h2>
-                <p>
-                    <%= journal.body %>
-                </p>
+                <h2><%= journal.heading %></h2>
+                <p><%= journal.body %></p>
             </div>
         <% }) %>
     </div>
 
     <form id="form-add">
         <input id="journalheading" type="text" name="journalheading" placeholder="Journal Heading"><br>
-        <textarea id="journalbody" name="journalbody" col="50" row="4" placeholder="Journal Body"></textarea>
+        <textarea id="journalbody" name="journalbody" cols="50" rows="4" placeholder="Journal Body"></textarea>
         <input class="form-button" id="btn-submit" type="submit" value="Add">
     </form>
 
