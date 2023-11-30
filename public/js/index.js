@@ -43,7 +43,35 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = `/user/?un=${localStorage.getItem("username")}`;
         });
     });
+
+    // const deleteButtons = document.querySelectorAll('.delete-button');
+    // deleteButtons.forEach((button, index) => {
+    //     button.addEventListener('click', (event) => {
+    //         // Handle the deletion here
+    //         deleteJournal(index);
+    //     });
+    // });
 });
+
+// Function to delete a journal entry
+// async function deleteJournal(index) {
+//     const result = await fetch("/", {
+//         method: 'DELETE',
+//         headers: {
+//             "content-type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             username: localStorage.getItem("username"),
+//             journalIndex: index
+//         })
+//     }).then((res) => res.json());
+
+//     // Handle the result if needed
+//     console.log(result);
+
+//     // Optionally, you might want to refresh the page or update the UI
+//     window.location.href = `/user/?un=${localStorage.getItem("username")}`;
+// }
 
 // Function to check if a color is bright
 function isBrightColor(hexColor) {
