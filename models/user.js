@@ -10,14 +10,15 @@ const userSchema = mongoose.Schema(
         password: {type: String, required: true},
         journals: [
             {
-                heading: {type: String},
-                body: {type: String}
+                id: {type: Number, required: true},
+                heading: {type: String, required: true},
+                body: {type: String, required: true},
             }
         ]
     }
 );
 
 // Creating Model
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('UserData', userSchema);
 
 module.exports = User;

@@ -55,28 +55,24 @@ app.put("/", async (req, res) => {
     });
 });
 
-// app.delete("/", async (req, res) => {
-//     console.log("DELETE: /");
-
-//     const user = await User.findOne({ username: req.body.username });
-
-//     // Assuming req.body.journalIndex is the index of the journal to be deleted
-//     const journalIndex = req.body.journalIndex;
-
-//     if (journalIndex >= 0 && journalIndex < user.journals.length) {
-//         user.journals.splice(journalIndex, 1);
-
-//         User.updateOne({ username: user.username }, user).then(() => {
-//             console.log("User data updated.");
-//             res.status(200).json({ message: "Journal deleted successfully." });
-//         }).catch((error) => {
-//             console.log("Error in updating data.");
-//             res.status(400).json({ error: error });
-//         });
-//     } else {
-//         res.status(404).json({ error: "Journal not found." });
-//     }
-// });
+app.delete("/", async (req, res) => {
+    console.log("DELETE: /");
+    const user = await User.findOne({ username: req.body.username });
+    const journalId = req.body.journalId;
+    for (let i = 0; i < user.journals.length; i++) {
+        if (user.journals[i].id == journalId) {
+            user.journals.splice(i, 1);
+            break;
+        }
+        User.updateOne({ username: user.username }, user).then(() => {
+            console.log("Journal deleted.");
+            res.status(200).json({ message: "Journal deleted successfully." });
+        }).catch((error) => {
+            console.log("Error in deleting journal.");
+            res.status(400).json({ error: "Could not delete the journal" });
+        });
+    }
+});
 
 app.post("/signin/", async (req, res) => {
   console.log("Signing in...");
