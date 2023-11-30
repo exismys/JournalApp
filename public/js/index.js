@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
     for (element of elements) {
         const color = colors[Math.floor(Math.random() * colors.length)];
         element.style.backgroundColor = color;
-        // Adjust text color based on background brightness
         const textColor = isBrightColor(color) ? '#333' : '#eee';
         element.style.color = textColor;
     }
@@ -73,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
 //     window.location.href = `/user/?un=${localStorage.getItem("username")}`;
 // }
 
-// Function to check if a color is bright
+
+
 function isBrightColor(hexColor) {
     const r = parseInt(hexColor.slice(1, 3), 16);
     const g = parseInt(hexColor.slice(3, 5), 16);
@@ -81,3 +81,21 @@ function isBrightColor(hexColor) {
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
     return brightness > 128;
 }
+
+async function isAuthorized() {
+    const result = await fetch("/isauthorized/", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            token: localStorage.getItem("token")
+        })
+    }).then(res => res.json());
+
+    if (result.status !== "ok" || result.username !== window.location.search.substring(4)) {
+        window.location.href = "/signin/";
+    }
+}
+
+isAuthorized();

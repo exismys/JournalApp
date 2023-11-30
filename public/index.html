@@ -8,31 +8,9 @@
     <link type="text/css" rel="stylesheet" href="/styles/index.css">
     <link type="text/css" rel="stylesheet" href="/styles/form.css">
     <link type="text/css" rel="stylesheet" href="/styles/modal.css">
-    <link type="application/javascript" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTvM5+A9WQZaWTmJ2G4W3tQI5lql5yI94" crossorigin="anonymous">
 </head>
 
-<!-- Script to check authorization -->
-<script>
-    async function isAuthorized() {
-        const result = await fetch("/isauthorized/", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({
-                token: localStorage.getItem("token")
-            })
-        }).then(res => res.json());
-
-        if (result.status !== "ok" || result.username !== window.location.search.substring(4)) {
-            window.location.href = "/signin/";
-        }
-    }
-    isAuthorized();
-</script>
-
 <body>
-
     <header>
         <div class="header-content">
             <p><%= username %></p>
